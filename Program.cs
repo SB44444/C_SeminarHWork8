@@ -206,7 +206,7 @@ Show2dArray(matrixRes);
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-
+/*
 int[,,] CreateRandom3dArray(int rows, int columns, int depth) // Метод для заполнения трёхмерного int массива двухзначными чиселами
 {
     int tamp = 0;
@@ -255,6 +255,7 @@ else
     int[,,] MyRandom3dArray = CreateRandom3dArray(x, y, z);
     Show3dArray(MyRandom3dArray);
     }
+ */   
 /*
 Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 Например, на выходе получается вот такой массив:
@@ -263,4 +264,42 @@ else
 11 16 15 06
 10 09 08 07
 */
+/*
+ int[,] CreateSpringArray(int n)  // Метод заполнения спирального массива
+{ 
+    int[,] array = new int[n, n];
+    int count = 1;               // Первый элемент массива
+    int i = 0;
+    int j = 0;
+    while (count <= n * n)  // Пока значение элемента не сравняется с максимальным числом, выполняется цикл
+    {
+        array[i, j] = count;
+        if (i < j && i + j >= n - 1)  // если индекс строки меньше индекса столбца И не превышена граница массива
+            ++i;                          // идем вправо
+        else if (i <= j + 1 && i + j < n - 1)  // если индекс строки меньше или равен индексу столбца И не превышена граница массива
+            ++j;                          // опускаемся вниз           
+        else if (i >= j && i + j > n - 1)  // если индекс столбца меньше индекса строки  И не превышена граница массива
+            --j;                          // идем влево
+        else                              // иначе
+            --i;                          // идем вверх
+        ++count;                          // добавляем следующий элемент 
+    }
+    return array;
+}
+void Show2dArray(int[,] array)              //   Метод вывода массива 2D
+{
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        Console.Write(" |");
+        for(int j = 0; j < array.GetLength(1); j++)
+            Console.Write(array[i,j] + "| ");
+        Console.WriteLine();    
+    }
+    Console.WriteLine(); 
+}
 
+ Console.WriteLine("Input size of array");
+int n = Convert.ToInt32(Console.ReadLine());
+int[,] MyArray = CreateSpringArray(n);
+Show2dArray(MyArray);
+*/
